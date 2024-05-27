@@ -10,6 +10,7 @@ import { FaPlus } from "react-icons/fa";
 import toast from "react-hot-toast";
 import Out from "./Out";
 const Profile = () => {
+  // eslint-disable-next-line no-unused-vars
   const { usr, setUsr, userdata } = useAuth();
   //const [pass, setPass] = useState();
 
@@ -54,7 +55,7 @@ const Profile = () => {
     };
 
     const result = await axios.post(
-      "http://localhost:3000/rentify/addprop",
+      "https://rentify-backend-pk7r.onrender.com/rentify/addprop",
       reqdata
     );
     if (result.status === 200) {

@@ -32,7 +32,7 @@ const Loginx = () => {
     console.log(reqdata);
 
     const result = await axios.post(
-      "http://localhost:3000/rentify/signup",
+      "https://rentify-backend-pk7r.onrender.com/rentify/signup",
       reqdata
     );
     if (result.status === 200) {

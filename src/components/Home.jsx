@@ -1,6 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React from "react";
 import axios from "axios";
+// eslint-disable-next-line no-unused-vars
 import { useEffect, useState, useRef } from "react";
 import { useContent } from "../utils/Conprovider";
 import { useNavigate } from "react-router-dom";
@@ -35,9 +36,12 @@ const Home = () => {
     const usr = sessionStorage.getItem("user");
     if (!usr) navigate("/login");
     else {
-      const res = await axios.post("http://localhost:3000/rentify/getusr/", {
-        user: user,
-      });
+      const res = await axios.post(
+        "https://rentify-backend-pk7r.onrender.com/rentify/getusr/",
+        {
+          user: user,
+        }
+      );
       setUsrdd(res.data.data);
       console.log(usrdd);
       const dial = document.getElementById("my_modal_4");
@@ -47,10 +51,12 @@ const Home = () => {
 
   useEffect(() => {
     const abortController = new AbortController();
-    axios.get("http://localhost:3000/rentify/getprop/").then((res) => {
-      setFilter(res.data.data);
-      setData(res.data.data);
-    });
+    axios
+      .get("https://rentify-backend-pk7r.onrender.com/rentify/getprop/")
+      .then((res) => {
+        setFilter(res.data.data);
+        setData(res.data.data);
+      });
 
     //console.log(data);
     return () => {
