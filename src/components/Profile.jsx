@@ -5,6 +5,7 @@ import { useAuth } from "../utils/AuthProvider";
 import { Navigate } from "react-router";
 // eslint-disable-next-line no-unused-vars
 import { useEffect, useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { FaPlus } from "react-icons/fa";
 import toast from "react-hot-toast";
@@ -27,6 +28,8 @@ const Profile = () => {
     };
   }, []); */
 
+  const navigate = useNavigate();
+
   const title = useRef("");
   const place = useRef("");
   const area = useRef("");
@@ -39,7 +42,7 @@ const Profile = () => {
     toast.success("logged out");
     sessionStorage.removeItem("user");
     sessionStorage.removeItem("userdata");
-    window.location.reload();
+    navigate("/login");
   };
 
   const handlehist = async (e) => {
