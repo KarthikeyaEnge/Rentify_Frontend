@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel&family=Cinzel+Decorative:wght@700&family=Exo+2:wght@300&family=Manrope&family=Michroma&family=Nunito:wght@300&family=Orbitron&family=Outfit:wght@500&family=Philosopher&family=Prosto+One&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.font-michroma {
+  font-family: 'michroma';
+}
+
+.font-nunito {
+  font-family: 'nunito';
+}
+
+.font-exo {
+  font-family: 'exo 2';
+}
+
+.font-outfit {
+  font-family: 'outfit', sans-serif;
+}
+
+.font-cinzeldec {
+  font-family: 'Cinzel Decorative';
+}
