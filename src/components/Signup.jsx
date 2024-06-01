@@ -2,7 +2,8 @@
 import React from "react";
 import axios from "axios";
 import { useRef } from "react";
-import { Navigate } from "react-router";
+import { useNavigate, Link } from "react-router-dom";
+
 import { useAuth } from "../utils/AuthProvider";
 import toast from "react-hot-toast";
 
@@ -17,7 +18,7 @@ const Loginx = () => {
 
   // eslint-disable-next-line no-unused-vars
   const { setUsr, usr } = useAuth();
-
+  const navigate = useNavigate();
   const handleSignup = async (e) => {
     e.preventDefault();
     const reqdata = {
@@ -37,9 +38,10 @@ const Loginx = () => {
     );
     if (result.status === 200) {
       toast.success("Registration successfull");
-      setUsr(user.current.value);
+      /* setUsr(user.current.value);
       sessionStorage.setItem("user", user.current.value);
-      sessionStorage.setItem("userdata", reqdata);
+      sessionStorage.setItem("userdata", JSON.stringify(reqdata)); */
+      navigate("/login");
     } else {
       toast.error("login failed");
     }
@@ -54,7 +56,7 @@ const Loginx = () => {
 
   return (
     <>
-      {!sessionStorage.getItem("user") ? (
+      {
         <main className=" min-h-screen bg-slate-200 overflow-x-hidden">
           <div className="flex flex-col h-screen items-center justify-center flex-nowrap bgimg  z-50 gap-4">
             <h1 className="text-2xl text-slate-900">Hey! 👋 Welcome Back!!</h1>
@@ -147,12 +149,14 @@ const Loginx = () => {
               >
                 Register
               </button>
+              <div className="divider text-slate-900"> or </div>
+              <Link to={"/login"} className="btn btn-info w-1/2">
+                Login
+              </Link>
             </form>
           </div>
         </main>
-      ) : (
-        <Navigate to="/login" />
-      )}
+      }
     </>
   );
 };
